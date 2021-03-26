@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "HCI-P1-Game/1.0.0": {
+        "runtime": {
+          "HCI-P1-Game.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HCI-P1-Game/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
