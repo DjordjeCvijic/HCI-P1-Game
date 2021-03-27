@@ -59,24 +59,5 @@ namespace HCI_P1_Game.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string file {
-            get {
-                return ResourceManager.GetString("file", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to nesto
-        ///.
-        /// </summary>
-        internal static string TextFile1 {
-            get {
-                return ResourceManager.GetString("TextFile1", resourceCulture);
-            }
-        }
     }
 }

@@ -45,3 +45,5 @@ D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\HCI-P1-Game.dll
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\HCI-P1-Game.pdb
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\HCI-P1-Game.genruntimeconfig.cache
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\App.baml
+D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\AnswerCheckWindow.g.cs
+D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\AnswerCheckWindow.baml

@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_P1_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="600">
+        Title="MainWindow" Height="350" Width="600"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        >
+    
     <Grid Background="{DynamicResource BackgroundColor}">
         <Button x:Name="BtnStartGame" Content="Pocni igru" HorizontalAlignment="Left" Margin="79,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.566,2.363" Height="76" Width="171" Click="BtnStartGame_Click" Background="{DynamicResource BackgroundColorForButton}" FontSize="20"/>
         <Button Content="Pregeldaj rezultate" HorizontalAlignment="Left" Margin="358,184,0,0" VerticalAlignment="Top" Height="76" Width="193" FontSize="20" Background="{DynamicResource BackgroundColorForButton}"/>

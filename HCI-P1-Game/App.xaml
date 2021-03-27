@@ -7,5 +7,6 @@
         <SolidColorBrush x:Key="BackgroundColor">#30a7cf</SolidColorBrush>
         <SolidColorBrush x:Key="BackgroundColorForLabel" Color="CadetBlue"/>
         <SolidColorBrush x:Key="BackgroundColorForButton">#0a5991</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundColorForPriceLabel" Color="Yellow"/>
     </Application.Resources>
 </Application>
