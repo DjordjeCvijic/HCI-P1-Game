@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_P1_Game"
         mc:Ignorable="d"
-        Title="GameWindow" Height="450" Width="800">
-    <Grid>
-        <ListBox x:Name="LBForQuestion" Margin="79,42,130,42" BorderBrush="#FF1946CD"/>
-
+        Title="GameWindow" Height="700" Width="1200">
+    <Grid Margin="0,0,0,5">
+        <TextBox x:Name="TbQuestion" HorizontalAlignment="Left" Height="65" Margin="248,289,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="355"/>
+        <Button x:Name="BtnAnswerA" Content="" HorizontalAlignment="Left" Margin="136,388,0,0" VerticalAlignment="Top" Height="61" Width="246" Click="BtnAnswer_Click"/>
+        <Button x:Name="BtnAnswerB" Content="" HorizontalAlignment="Left" Margin="448,389,0,0" VerticalAlignment="Top" Height="61" Width="235" Click="BtnAnswer_Click"/>
+        <Button x:Name="BtnAnswerC" Content="" HorizontalAlignment="Left" Margin="136,472,0,0" VerticalAlignment="Top" Height="61" Width="242" Click="BtnAnswer_Click"/>
+        <Button x:Name="BtnAnswerD" Content="" HorizontalAlignment="Left" Margin="453,468,0,0" VerticalAlignment="Top" Height="61" Width="231" Click="BtnAnswer_Click"/>
+        <TextBox x:Name="TbAnswer" HorizontalAlignment="Left" Margin="736,253,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Height="78"/>
     </Grid>
 </Window>
