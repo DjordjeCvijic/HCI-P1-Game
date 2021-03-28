@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HCI_P1_Game.Model;
+using System.Threading;
 namespace HCI_P1_Game
 {
     /// <summary>
@@ -85,7 +86,8 @@ namespace HCI_P1_Game
             PriceLabels.Add(LbPrice15);
             
             SetNewQuestion();
-            
+
+            DgResult.ItemsSource = LoadCollectionData();
             
 
         }
@@ -93,29 +95,65 @@ namespace HCI_P1_Game
         private void BtnAnswer_Click(object sender, RoutedEventArgs e)
         {
             string answer = (sender as Button).Tag.ToString();
-            AnswerCheckWindow answerCheckWindow = new AnswerCheckWindow();
-            bool? result = answerCheckWindow.ShowDialog();
+            InfoWindow areYouSureWindow = new InfoWindow("Da li ste sigurni","DA","NE");
+            bool? result = areYouSureWindow.ShowDialog();
             if (result ?? false)
             {
-               
+                Thread.Sleep(1000);
                 if (answer.Equals(CurrentQuestion.CorrectAnswer))
                 {
-                    TbAnswer.Text = "Odgovor je tacan"+ CurrentQuestionNumber;
-                    SetNewQuestion();
+                    
+                   
+                    InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tacan","Sledece pitanje","Kraj igre");
+                    bool? result1 = nextQuestionWindow.ShowDialog();
+                    if(result1 ?? false)//tacan odgovor i sledece pitanje
+                    {
+                        SetNewQuestion();
+                    }
+                    else
+                    {
+                        ClearWindow();
+
+                    }
+                   
                 }
-                else
+                else//odgovor nije tacan
                 {
-                    TbAnswer.Text = "Odgovor nije tacan";
+                    InfoWindow saveScoreWindow = new InfoWindow("Odgovor nije tacan", "Sacuvaj rezultat", "Ponovna igra");
+                    bool? result2 = saveScoreWindow.ShowDialog();
+                    if(result2 ?? false)//hoce da sacuva rezulta
+                    {
+
+                    }
+                    else//nece da sacuva rezultat,ponovna igra
+                    {
+                        ClearWindow();
+                        SetNewQuestion();
+                    }
                 }
             }
-            else
-            {
-                TbAnswer.Text = "ne";
-            }
+           
             //TbAnswer.Text = answer;
         }
+
+        private void ClearWindow()
+        {
+            TbQuestion.Clear();
+            BtnAnswerA.Content = "";
+            BtnAnswerB.Content = "";
+            BtnAnswerC.Content = "";
+            BtnAnswerD.Content = "";
+            foreach(Label l in PriceLabels)
+                l.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColor"];
+            CurrentQuestion = null;
+            CurrentQuestionNumber = 0;
+
+        }
+
         private void SetNewQuestion()
         {
+            if(CurrentQuestionNumber==0)
+                LbPrice1.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColorForPriceLabel"];
             CurrentQuestionNumber++;
             Label lb = PriceLabels[CurrentQuestionNumber - 1];
             if (CurrentQuestionNumber > 1)
@@ -172,6 +210,35 @@ namespace HCI_P1_Game
             }
 
            
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnNewGame_Click(object sender, RoutedEventArgs e)
+        {
+           
+            SetNewQuestion();
+        }
+        private List<GameResult> LoadCollectionData()
+        {
+            List<GameResult> gameResult = new List<GameResult>();
+
+            gameResult.Add(new GameResult()
+            {
+                userName = "marko",
+                userSccore = 12,
+                timeOfScore = DateTime.Now
+            }) ;
+            gameResult.Add(new GameResult()
+            {
+                userName = "janko",
+                userSccore = 15,
+                timeOfScore = DateTime.Now
+            });
+            return gameResult;
         }
     }
 }

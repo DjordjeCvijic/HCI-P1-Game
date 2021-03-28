@@ -13,24 +13,26 @@ using System.Windows.Shapes;
 namespace HCI_P1_Game
 {
     /// <summary>
-    /// Interaction logic for AnswerCheckWindow.xaml
+    /// Interaction logic for InfoWindow.xaml
     /// </summary>
-    public partial class AnswerCheckWindow : Window
+    public partial class InfoWindow : Window
     {
-       
-        public AnswerCheckWindow()
+        public InfoWindow(string message, string firstBtnText, string secondBtnText)
         {
             InitializeComponent();
-            
+            LblMessage.Content = message;
+            BtnFirst.Content = firstBtnText;
+            BtnSecond.Content = secondBtnText;
+
         }
 
-        private void BtnYes_Click(object sender, RoutedEventArgs e)
+        private void BtnFirst_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();
         }
 
-        private void BtnNo_Click(object sender, RoutedEventArgs e)
+        private void BtnSecond_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
             this.Close();

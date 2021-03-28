@@ -14,23 +14,25 @@
         <Button x:Name="BtnAnswerB" Content="" HorizontalAlignment="Left" Margin="448,389,0,0" VerticalAlignment="Top" Height="61" Width="235" Click="BtnAnswer_Click"/>
         <Button x:Name="BtnAnswerC" Content="" HorizontalAlignment="Left" Margin="136,472,0,0" VerticalAlignment="Top" Height="61" Width="242" Click="BtnAnswer_Click"/>
         <Button x:Name="BtnAnswerD" Content="" HorizontalAlignment="Left" Margin="453,468,0,0" VerticalAlignment="Top" Height="61" Width="231" Click="BtnAnswer_Click"/>
-        <TextBox x:Name="TbAnswer" HorizontalAlignment="Left" Margin="344,92,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" Height="78"/>
         <StackPanel Margin="872,195,26,2">
-            <Label x:Name="LbPrice15" Content="Label" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label x:Name="LbPrice14" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice13" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice12" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice11" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice10" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice9" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice8" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice7" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice6" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice5" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice4" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice3" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice2" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice1" Content="Label" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice15" Content="1 000 000" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="LbPrice14" Content="500 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice13" Content="250 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice12" Content="125 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice11" Content="64 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice10" Content="32 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice9" Content="16 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice8" Content="8 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice7" Content="4 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice6" Content="2 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice5" Content="1000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice4" Content="500" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice3" Content="300" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice2" Content="200" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice1" Content="100" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
+        <Button x:Name="BtnClose" Content="Izadji iz igre" HorizontalAlignment="Left" Margin="1060,31,0,0" VerticalAlignment="Top" Height="34" Width="86" Click="BtnClose_Click"/>
+        <Button x:Name="BtnNewGame" Content="Nova igra" HorizontalAlignment="Left" Margin="934,32,0,0" VerticalAlignment="Top" Height="34" Width="86" Click="BtnNewGame_Click"/>
+        <DataGrid x:Name="DgResult" HorizontalAlignment="Left" Height="170" Margin="142,92,0,0" VerticalAlignment="Top" Width="663" RowHeight="30" ColumnWidth="100"/>
     </Grid>
 </Window>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\GIT\HCI-P1-Game\HCI-P1-Game\App.xaml
-3-1109070939
+3277335999
 
-9-2059104739
+10-1399388154
 192-1533232326
-AnswerCheckWindow.xaml;GameWindow.xaml;MainWindow.xaml;
+GameWindow.xaml;InfoWindow.xaml;MainWindow.xaml;
 
-False
+True
 
