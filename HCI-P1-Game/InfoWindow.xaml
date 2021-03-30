@@ -10,8 +10,8 @@
         WindowStartupLocation="CenterScreen">
     <Grid >
 
-        <Button x:Name="BtnFirst"  Margin="69,0,0,0" VerticalAlignment="Center" Height="58" Click="BtnFirst_Click" FontSize="14" HorizontalAlignment="Left" Width="156" Grid.Row="1"/>
-        <Button x:Name="BtnSecond"  HorizontalAlignment="Left" Margin="275,0,0,0" VerticalAlignment="Center" Height="58" Width="156" Click="BtnSecond_Click" FontSize="14"/>
-        <Label x:Name="LblMessage" RenderTransformOrigin="-0.137,0.086" Content="" HorizontalContentAlignment="Center" Margin="117,27,120,147"/>
+        <Button x:Name="BtnFirst"  Margin="64,89,0,0" VerticalAlignment="Top" Height="58" Click="BtnFirst_Click" FontSize="14" HorizontalAlignment="Left" Width="156"/>
+        <Button x:Name="BtnSecond"  HorizontalAlignment="Left" Margin="272,89,0,0" VerticalAlignment="Top" Height="58" Width="156" Click="BtnSecond_Click" FontSize="14"/>
+        <Label  x:Name="LblMessage"   HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="130,30,0,0" VerticalAlignment="Top" Width="232"/>
     </Grid>
 </Window>

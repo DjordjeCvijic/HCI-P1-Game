@@ -6,9 +6,10 @@ namespace HCI_P1_Game.Model
 {
     class GameResult
     {
-        public string userName { get; set; }
-        public DateTime timeOfScore { get; set; }
-        public int userSccore { get; set; }
+        public string Ime { get; set; }
+        public int Rezultat { get; set; }
+        public string Datum { get; set; }
+        
 
         
 

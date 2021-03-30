@@ -47,3 +47,5 @@ D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\HCI-P1-Game.genruntimecon
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\App.baml
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\InfoWindow.g.cs
 D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\InfoWindow.baml
+D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\SaveResultWindow.g.cs
+D:\GIT\HCI-P1-Game\HCI-P1-Game\obj\Debug\netcoreapp3.1\SaveResultWindow.baml

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\GIT\HCI-P1-Game\HCI-P1-Game\App.xaml
-3277335999
+41638230541
 
-8-1103829860
+9-1501336811
 192-1533232326
-GameWindow.xaml;InfoWindow.xaml;MainWindow.xaml;
+GameWindow.xaml;InfoWindow.xaml;MainWindow.xaml;SaveResultWindow.xaml;
 
 False
 

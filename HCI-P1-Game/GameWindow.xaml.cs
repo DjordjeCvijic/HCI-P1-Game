@@ -20,29 +20,30 @@ namespace HCI_P1_Game
     public partial class GameWindow : Window
     {
         private int CurrentQuestionNumber=0;
-        private Random random = new Random();
         private Question CurrentQuestion = null;
+        private int CurrentPrice = 0;
+        private Random random = new Random();
+        private string fileNameOfResult = "result.txt";
         private List<Label> PriceLabels = new List<Label>();
         private List<Question> questionList1 = new List<Question>();
         private List<Question> questionList2 = new List<Question>();
         private List<Question> questionList3 = new List<Question>();
-        public GameWindow()
+        public GameWindow(bool resultOnly)
         {
             InitializeComponent();
             InitializeWindow();
+            if (resultOnly)
+                ClearWindow();
         }
 
         private void InitializeWindow()
         {
-            //za pravljenje novog using
-            //if (File.Exists(fileName))
-            //using(FileStream fs = File.Create(fileName)){
-            //    Byte[] title = new UTF8Encoding(true).GetBytes("pocetak");
-            //    fs.Write(title, 0, title.Length);
-            // } a za dodavanje  File.AppendAllText(fileName, "novooo");
-
-
            
+            
+            if (!File.Exists(fileNameOfResult))
+                File.Create(fileNameOfResult);
+   
+
             string fileName = "questions.txt";
             
             string[] allLines = File.ReadAllLines(fileName);
@@ -69,6 +70,7 @@ namespace HCI_P1_Game
                 else
                     questionList3.Add(q);
             }
+            LbPrice1.Tag = 100;
             PriceLabels.Add(LbPrice1);
             PriceLabels.Add(LbPrice2);
             PriceLabels.Add(LbPrice3);
@@ -102,16 +104,21 @@ namespace HCI_P1_Game
                 Thread.Sleep(1000);
                 if (answer.Equals(CurrentQuestion.CorrectAnswer))
                 {
-                    
-                   
-                    InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tacan","Sledece pitanje","Kraj igre");
+                    string CurrentPriceLikeString = PriceLabels[CurrentQuestionNumber - 1].Content.ToString();
+                    CurrentPrice = int.Parse(StringWithoutSpaces(CurrentPriceLikeString)); 
+                    InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tacan","Sledece pitanje","Kraj igre,sacuvaj rezultat");
                     bool? result1 = nextQuestionWindow.ShowDialog();
                     if(result1 ?? false)//tacan odgovor i sledece pitanje
                     {
+                        
                         SetNewQuestion();
                     }
                     else
                     {
+                        
+                        new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        DgResult.ItemsSource = null;
+                        DgResult.ItemsSource = LoadCollectionData();
                         ClearWindow();
 
                     }
@@ -123,7 +130,8 @@ namespace HCI_P1_Game
                     bool? result2 = saveScoreWindow.ShowDialog();
                     if(result2 ?? false)//hoce da sacuva rezulta
                     {
-
+                        new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        ClearWindow();
                     }
                     else//nece da sacuva rezultat,ponovna igra
                     {
@@ -133,11 +141,19 @@ namespace HCI_P1_Game
                 }
             }
            
-            //TbAnswer.Text = answer;
+            
+        }
+
+        private string StringWithoutSpaces(string currentPriceLikeString)
+        {
+            string trimmed = currentPriceLikeString.Replace(" ", String.Empty);
+            return trimmed;
+
         }
 
         private void ClearWindow()
         {
+            
             TbQuestion.Clear();
             BtnAnswerA.Content = "";
             BtnAnswerB.Content = "";
@@ -147,7 +163,7 @@ namespace HCI_P1_Game
                 l.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColor"];
             CurrentQuestion = null;
             CurrentQuestionNumber = 0;
-
+            CurrentPrice = 0;
         }
 
         private void SetNewQuestion()
@@ -219,26 +235,30 @@ namespace HCI_P1_Game
 
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
         {
-           
+            ClearWindow();
             SetNewQuestion();
         }
         private List<GameResult> LoadCollectionData()
         {
-            List<GameResult> gameResult = new List<GameResult>();
+            List<GameResult> gameResults = new List<GameResult>();
 
-            gameResult.Add(new GameResult()
+            string[] allLines = File.ReadAllLines(fileNameOfResult);
+            string[] lineParts;
+            foreach (string line in allLines)
             {
-                userName = "marko",
-                userSccore = 12,
-                timeOfScore = DateTime.Now
-            }) ;
-            gameResult.Add(new GameResult()
-            {
-                userName = "janko",
-                userSccore = 15,
-                timeOfScore = DateTime.Now
-            });
-            return gameResult;
+                lineParts = line.Split(';');
+                GameResult gr = new GameResult()
+                {
+                    Ime = lineParts[0],
+                    Rezultat = int.Parse(lineParts[1]),
+                    Datum = lineParts[2]
+                };
+                gameResults.Add(gr);
+            }
+            gameResults.Sort((x, y) => y.Rezultat.CompareTo(x.Rezultat));
+
+            return gameResults;
+           
         }
     }
 }

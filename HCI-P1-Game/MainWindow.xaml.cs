@@ -27,7 +27,13 @@ namespace HCI_P1_Game
 
         private void BtnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            new GameWindow().Show();
+            new GameWindow(false).Show();
+            this.Close();
+        }
+
+        private void BtnResult_Click(object sender, RoutedEventArgs e)
+        {
+            new GameWindow(true).Show();
             this.Close();
         }
     }
