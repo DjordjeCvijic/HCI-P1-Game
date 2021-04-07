@@ -7,37 +7,37 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="700" Width="1200"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,5" Background="{DynamicResource BackgroundColor}">
-        <TextBox x:Name="TbQuestion" HorizontalAlignment="Left" Height="65" Margin="242,361,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="355"/>
-        <Button x:Name="BtnAnswerA" Content="" HorizontalAlignment="Left" Margin="130,460,0,0" VerticalAlignment="Top" Height="61" Width="246" Click="BtnAnswer_Click"/>
-        <Button x:Name="BtnAnswerB" Content="" HorizontalAlignment="Left" Margin="442,461,0,0" VerticalAlignment="Top" Height="61" Width="235" Click="BtnAnswer_Click"/>
-        <Button x:Name="BtnAnswerC" Content="" HorizontalAlignment="Left" Margin="130,544,0,0" VerticalAlignment="Top" Height="61" Width="242" Click="BtnAnswer_Click"/>
-        <Button x:Name="BtnAnswerD" Content="" HorizontalAlignment="Left" Margin="447,540,0,0" VerticalAlignment="Top" Height="61" Width="231" Click="BtnAnswer_Click"/>
-        <StackPanel Margin="872,195,26,2">
-            <Label x:Name="LbPrice15" Content="1 000 000" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label x:Name="LbPrice14" Content="500 000" FontSize="15" HorizontalAlignment="Center"/>
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource BackgroundColor1}">
+        <TextBox x:Name="TbQuestion" HorizontalAlignment="Left" Height="65" Margin="242,361,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="355" Background="CornflowerBlue"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+        <Button x:Name="BtnAnswerA" Content="" HorizontalAlignment="Left" Margin="130,460,0,0" VerticalAlignment="Top" Height="61" Width="246" Click="BtnAnswer_Click" Style="{DynamicResource RoundedAnswerButtonStyle}"/>
+        <Button x:Name="BtnAnswerB" Content="" HorizontalAlignment="Left" Margin="442,461,0,0" VerticalAlignment="Top" Height="61" Width="235" Click="BtnAnswer_Click" Style="{DynamicResource RoundedAnswerButtonStyle}"/>
+        <Button x:Name="BtnAnswerC" Content="" HorizontalAlignment="Left" Margin="130,544,0,0" VerticalAlignment="Top" Height="61" Width="242" Click="BtnAnswer_Click" Style="{DynamicResource RoundedAnswerButtonStyle}"/>
+        <Button x:Name="BtnAnswerD" Content="" HorizontalAlignment="Left" Margin="447,540,0,0" VerticalAlignment="Top" Height="61" Width="231" Click="BtnAnswer_Click" Style="{DynamicResource RoundedAnswerButtonStyle}"/>
+        <StackPanel Margin="872,195,26,2" Background="CornflowerBlue">
+            <Label x:Name="LbPrice15" Content="1 000 000" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource BackgroundColorForSillPriceLabel}"/>
+            <Label x:Name="LbPrice14" Content="500 000" FontSize="15" HorizontalAlignment="Center" />
             <Label x:Name="LbPrice13" Content="250 000" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice12" Content="125 000" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice11" Content="64 000" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice10" Content="32 000" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice9" Content="16 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice9" Content="16 000" FontSize="15" HorizontalAlignment="Center" Background="{DynamicResource BackgroundColorForSillPriceLabel}"/>
             <Label x:Name="LbPrice8" Content="8 000" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice7" Content="4 000" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice6" Content="2 000" FontSize="15" HorizontalAlignment="Center"/>
-            <Label x:Name="LbPrice5" Content="1 000" FontSize="15" HorizontalAlignment="Center"/>
+            <Label x:Name="LbPrice5" Content="1 000" FontSize="15" HorizontalAlignment="Center" Background="{DynamicResource BackgroundColorForSillPriceLabel}"/>
             <Label x:Name="LbPrice4" Content="500" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice3" Content="300" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice2" Content="200" FontSize="15" HorizontalAlignment="Center"/>
             <Label x:Name="LbPrice1" Content="100" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
-        <Button x:Name="BtnClose" Content="Izadji iz igre" HorizontalAlignment="Left" Margin="1060,31,0,0" VerticalAlignment="Top" Height="34" Width="86" Click="BtnClose_Click"/>
+        <Button x:Name="BtnClose" Content="Izađi iz igre" HorizontalAlignment="Left" Margin="1060,31,0,0" VerticalAlignment="Top" Height="34" Width="86" Click="BtnClose_Click"/>
         <Button x:Name="BtnNewGame" Content="Nova igra" HorizontalAlignment="Left" Margin="934,32,0,0" VerticalAlignment="Top" Height="34" Width="86" Click="BtnNewGame_Click"/>
-        <DataGrid x:Name="DgResult" HorizontalAlignment="Left" Height="170" Margin="24,42,0,0" VerticalAlignment="Top" Width="303" RowHeight="30" ColumnWidth="100"  Background="{DynamicResource BackgroundColor}" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" GridLinesVisibility="Horizontal" IsReadOnly="True" AreRowDetailsFrozen="True" 
+        <DataGrid x:Name="DgResult" HorizontalAlignment="Left" Height="215" Margin="24,42,0,0" VerticalAlignment="Top" Width="303" RowHeight="30" ColumnWidth="100"  Background="{DynamicResource BackgroundColor}" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" GridLinesVisibility="Horizontal" IsReadOnly="True" AreRowDetailsFrozen="True" 
                   CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns = "False" VerticalScrollBarVisibility="Hidden" AlternationCount="2" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" RowHeaderWidth="0" >
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
-                <Setter Property="IsHitTestVisible" Value="False"/>
+                    <Setter Property="IsHitTestVisible" Value="False"/>
                 </Style>
             </DataGrid.RowStyle>
         </DataGrid>

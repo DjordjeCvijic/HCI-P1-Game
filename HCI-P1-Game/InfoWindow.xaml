@@ -7,11 +7,10 @@
         mc:Ignorable="d"
         Title="InfoWindow" Height="200" Width="500"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
-    <Grid >
-
-        <Button x:Name="BtnFirst"  Margin="64,89,0,0" VerticalAlignment="Top" Height="58" Click="BtnFirst_Click" FontSize="14" HorizontalAlignment="Left" Width="156"/>
-        <Button x:Name="BtnSecond"  HorizontalAlignment="Left" Margin="272,89,0,0" VerticalAlignment="Top" Height="58" Width="156" Click="BtnSecond_Click" FontSize="14"/>
-        <Label  x:Name="LblMessage"   HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="130,30,0,0" VerticalAlignment="Top" Width="232"/>
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource BackgroundColor2}">
+        <Button x:Name="BtnFirst"  Margin="64,89,0,0" VerticalAlignment="Top" Height="58" Click="BtnFirst_Click" FontSize="14" HorizontalAlignment="Left" Width="156" Background="{DynamicResource BackgroundColorForButton}"/>
+        <Button x:Name="BtnSecond"  HorizontalAlignment="Left" Margin="272,89,0,0" VerticalAlignment="Top" Height="58" Width="156" Click="BtnSecond_Click" FontSize="14" Background="{DynamicResource BackgroundColorForButton}"/>
+        <Label  x:Name="LblMessage"   HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="28" Margin="130,30,0,0" VerticalAlignment="Top" Width="232" Background="{DynamicResource BackgroundColorForLabel}"/>
     </Grid>
 </Window>

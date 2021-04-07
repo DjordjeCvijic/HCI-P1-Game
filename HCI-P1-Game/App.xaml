@@ -4,9 +4,23 @@
              xmlns:local="clr-namespace:HCI_P1_Game"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="BackgroundColor">#30a7cf</SolidColorBrush>
-        <SolidColorBrush x:Key="BackgroundColorForLabel" Color="CadetBlue"/>
-        <SolidColorBrush x:Key="BackgroundColorForButton">#0a5991</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundColor1">#1984b0</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundColorForLabel" Color="Silver"/>
+        <SolidColorBrush x:Key="BackgroundColor2">#0a5991</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundColorForButton" Color="Silver"/>
         <SolidColorBrush x:Key="BackgroundColorForPriceLabel" Color="Yellow"/>
+        <SolidColorBrush x:Key="BackgroundColorForSillPriceLabel" Color="Red"/>
+        <Style x:Key="RoundedAnswerButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="Silver" BorderThickness="2" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

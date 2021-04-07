@@ -28,6 +28,8 @@ namespace HCI_P1_Game
         private List<Question> questionList1 = new List<Question>();
         private List<Question> questionList2 = new List<Question>();
         private List<Question> questionList3 = new List<Question>();
+        private int sillNumber = 0;
+        private List<Button> buttonList = new List<Button>();
         public GameWindow(bool resultOnly)
         {
             InitializeComponent();
@@ -97,40 +99,72 @@ namespace HCI_P1_Game
         private void BtnAnswer_Click(object sender, RoutedEventArgs e)
         {
             string answer = (sender as Button).Tag.ToString();
-            InfoWindow areYouSureWindow = new InfoWindow("Da li ste sigurni","DA","NE");
+            InfoWindow areYouSureWindow = new InfoWindow("Da li ste sigurni ?","DA","NE");
             bool? result = areYouSureWindow.ShowDialog();
             if (result ?? false)
             {
                 Thread.Sleep(1000);
                 if (answer.Equals(CurrentQuestion.CorrectAnswer))
                 {
+
                     string CurrentPriceLikeString = PriceLabels[CurrentQuestionNumber - 1].Content.ToString();
-                    CurrentPrice = int.Parse(StringWithoutSpaces(CurrentPriceLikeString)); 
-                    InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tacan","Sledece pitanje","Kraj igre,sacuvaj rezultat");
-                    bool? result1 = nextQuestionWindow.ShowDialog();
-                    if(result1 ?? false)//tacan odgovor i sledece pitanje
+                    CurrentPrice = int.Parse(StringWithoutSpaces(CurrentPriceLikeString));
+                    if (CurrentQuestionNumber == 15)//krja igre osovjen milion
                     {
-                        
-                        SetNewQuestion();
+                        InfoWindow nextQuestionWindow = new InfoWindow("Čestitamo,osvojili ste milion !", "Sačuvaj rezultat", "Igraj ponovo");
+                        bool? result1 = nextQuestionWindow.ShowDialog();
+                        if (result1 ?? false)//osvojen milion,hoce da sacuva
+                        {
+
+                            new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                            DgResult.ItemsSource = null;
+                            DgResult.ItemsSource = LoadCollectionData();
+                            ClearWindow();
+                        }
+                        else//samo hoce novu igru
+                        {
+
+                            ClearWindow();
+                            SetNewQuestion();
+
+                        }
                     }
                     else
                     {
-                        
-                        new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
-                        DgResult.ItemsSource = null;
-                        DgResult.ItemsSource = LoadCollectionData();
-                        ClearWindow();
+                        InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tačan !", "Sledeće pitanje", "Kraj igre,sačuvaj rezultat");
+                        bool? result1 = nextQuestionWindow.ShowDialog();
+                        if (result1 ?? false)//tacan odgovor i sledece pitanje
+                        {
 
+                            SetNewQuestion();
+                        }
+                        else
+                        {
+
+                            new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                            DgResult.ItemsSource = null;
+                            DgResult.ItemsSource = LoadCollectionData();
+                            ClearWindow();
+
+                        }
                     }
+                    
                    
                 }
                 else//odgovor nije tacan
                 {
-                    InfoWindow saveScoreWindow = new InfoWindow("Odgovor nije tacan", "Sacuvaj rezultat", "Ponovna igra");
+                    InfoWindow saveScoreWindow = new InfoWindow("Odgovor nije tačan !", "Sačuvaj rezultat", "Ponovna igra");
                     bool? result2 = saveScoreWindow.ShowDialog();
                     if(result2 ?? false)//hoce da sacuva rezulta
                     {
-                        new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        if(sillNumber==1)
+                            new SaveResultWindow(1000, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        else if(sillNumber==2)
+                            new SaveResultWindow(16000, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        else
+                            new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
+                        DgResult.ItemsSource = null;
+                        DgResult.ItemsSource = LoadCollectionData();
                         ClearWindow();
                     }
                     else//nece da sacuva rezultat,ponovna igra
@@ -159,11 +193,18 @@ namespace HCI_P1_Game
             BtnAnswerB.Content = "";
             BtnAnswerC.Content = "";
             BtnAnswerD.Content = "";
-            foreach(Label l in PriceLabels)
-                l.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColor"];
+            for(int i = 0; i < PriceLabels.Count; i++)
+            {
+                if(i==4 || i==8 || i==14)
+                    PriceLabels[i].Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColorForSillPriceLabel"];
+                else
+                    PriceLabels[i].Background = (System.Windows.Media.Brush)Application.Current.Resources["CornflowerBlue"];
+            }
+                
             CurrentQuestion = null;
             CurrentQuestionNumber = 0;
             CurrentPrice = 0;
+            sillNumber = 0;
         }
 
         private void SetNewQuestion()
@@ -175,57 +216,111 @@ namespace HCI_P1_Game
             if (CurrentQuestionNumber > 1)
             {
                 Label lbTmp = PriceLabels[CurrentQuestionNumber - 2];
-                lbTmp.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColor"];
+                if(CurrentQuestionNumber-2==4 || CurrentQuestionNumber - 2 == 8 || CurrentQuestionNumber - 2 == 15)
+                {
+                    lbTmp.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColorForSillPriceLabel"];
+                    if (CurrentQuestionNumber - 2 == 4)
+                        sillNumber = 1;
+                    else
+                        sillNumber = 2;
+
+                }
+                else
+                    lbTmp.Background = (System.Windows.Media.Brush)Application.Current.Resources["CornflowerBlue"];
+
+
             }
             lb.Background = (System.Windows.Media.Brush)Application.Current.Resources["BackgroundColorForPriceLabel"];
             if (CurrentQuestionNumber <=5)
             {
+                buttonList.Add(BtnAnswerA);
+                buttonList.Add(BtnAnswerB);
+                buttonList.Add(BtnAnswerC);
+                buttonList.Add(BtnAnswerD);
                 int questionNumber = random.Next(questionList1.Count) ;
                 Question q = questionList1[questionNumber];
                 CurrentQuestion = q;
                 TbQuestion.Text = q.QuestionText;
-                BtnAnswerA.Content = q.Answer1;
-                BtnAnswerA.Tag = q.Answer1;
-                BtnAnswerB.Content = q.Answer2;
-                BtnAnswerB.Tag = q.Answer2;
-                BtnAnswerC.Content = q.Answer3;
-                BtnAnswerC.Tag = q.Answer3;
-                BtnAnswerD.Content = q.Answer4;
-                BtnAnswerD.Tag = q.Answer4;
+                Button b = GetRandomButton();
+                b.Content = q.Answer1;
+                b.Tag = q.Answer1;
+
+                b = GetRandomButton();
+                b.Content = q.Answer2;
+                b.Tag = q.Answer2;
+
+                b = GetRandomButton();
+                b.Content = q.Answer3;
+                b.Tag = q.Answer3;
+
+                b = GetRandomButton();
+                b.Content = q.Answer4;
+                b.Tag = q.Answer4;
                 
 
             }else if(CurrentQuestionNumber>5 && CurrentQuestionNumber <= 10)
             {
+                buttonList.Add(BtnAnswerA);
+                buttonList.Add(BtnAnswerB);
+                buttonList.Add(BtnAnswerC);
+                buttonList.Add(BtnAnswerD);
                 int questionNumber = random.Next(questionList2.Count);
                 Question q = questionList2[questionNumber];
                 CurrentQuestion = q;
                 TbQuestion.Text = q.QuestionText;
-                BtnAnswerA.Content = q.Answer1;
-                BtnAnswerA.Tag = q.Answer1;
-                BtnAnswerB.Content = q.Answer2;
-                BtnAnswerB.Tag = q.Answer2;
-                BtnAnswerC.Content = q.Answer3;
-                BtnAnswerC.Tag = q.Answer3;
-                BtnAnswerD.Content = q.Answer4;
-                BtnAnswerD.Tag = q.Answer4;
+                Button b = GetRandomButton();
+                b.Content = q.Answer1;
+                b.Tag = q.Answer1;
+
+                b = GetRandomButton();
+                b.Content = q.Answer2;
+                b.Tag = q.Answer2;
+
+                b = GetRandomButton();
+                b.Content = q.Answer3;
+                b.Tag = q.Answer3;
+
+                b = GetRandomButton();
+                b.Content = q.Answer4;
+                b.Tag = q.Answer4;
             }
             else
             {
+                buttonList.Add(BtnAnswerA);
+                buttonList.Add(BtnAnswerB);
+                buttonList.Add(BtnAnswerC);
+                buttonList.Add(BtnAnswerD);
                 int questionNumber = random.Next(questionList3.Count);
                 Question q = questionList3[questionNumber];
                 CurrentQuestion = q;
                 TbQuestion.Text = q.QuestionText;
-                BtnAnswerA.Content = q.Answer1;
-                BtnAnswerA.Tag = q.Answer1;
-                BtnAnswerB.Content = q.Answer2;
-                BtnAnswerB.Tag = q.Answer2;
-                BtnAnswerC.Content = q.Answer3;
-                BtnAnswerC.Tag = q.Answer3;
-                BtnAnswerD.Content = q.Answer4;
-                BtnAnswerD.Tag = q.Answer4;
+                Button b = GetRandomButton();
+                b.Content = q.Answer1;
+                b.Tag = q.Answer1;
+
+                b = GetRandomButton();
+                b.Content = q.Answer2;
+                b.Tag = q.Answer2;
+
+                b = GetRandomButton();
+                b.Content = q.Answer3;
+                b.Tag = q.Answer3;
+
+                b = GetRandomButton();
+                b.Content = q.Answer4;
+                b.Tag = q.Answer4;
             }
 
            
+        }
+        private Button GetRandomButton()
+        {
+            int c = buttonList.Count;
+            int radnomIndex=random.Next(c);
+            Button res = buttonList[radnomIndex];
+            buttonList.Remove(res);
+            return res;
+
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

@@ -40,7 +40,7 @@
 40;2;Ravnice na sjeveru Rusije nazivaju se?;Tundre;Ledare;stepe;Pustinje
 41;2;Pjesmu My Way u izvornoj verziji pjeva?;Frank Sinatra;Bob Dylan;Shirley Bessie;Dean Martin
 42;2;Drugi dio kog filmskog serijala je poznat pod nazivom ""Drumski ratnik"" ?; Pobješnjeli Max;Smrtonosno oružje;Umri muški;Terminator
-43;2; U kojem je filmu Hugh Jackman glumio suparničkog mađioničaraka liku kojeg glumi Christian Bale ?;Prestige;Bad Education;The Front Runner;Pan
+43;2;U kojem je filmu Hugh Jackman glumio suparničkog mađioničaraka liku kojeg glumi Christian Bale ?;Prestige;Bad Education;The Front Runner;Pan
 44;2;Koji je britanski akcijski glumac igrao ulogu Leeja Božića zajedno sa Sylvesterom Stalloneom u filmu The Expendables?;Jason Statham;Dolph Lundgren;Mickey Rourke;Eric Roberts
 45;2;Ko je bio BBC-jeva 'Sportska ličnost godine' 2001. godine?;David Beckham; Steven Gerrard;Michael Schumacher;Pete Sampras
 46;2;Koliko igrača ima u olimpijskom timu za curling?;4;3;5;7
@@ -50,7 +50,7 @@
 50;2;Koja je američka pop zvijezda postigla uspjeh na ljestvici 2015. sa singlovima ""Sorry"" i ""Love Yourself""?";Justin Bieber;Beyonce;Michael Jackson;Ariana Grande
 51;2;U kojoj se godini Arsenal preselio na stadion Emirates iz Highburyja?;2006;2004;2000;2010
 52;2;Koje godine je rođen William Shakespeare ?;1564;1500;1555;1565
-53;2;Daenerys ima 3 zmaja; dva se zovu Drogon i Rhaegal; kako se zove treći ?;Viserion;Aiden;Ghidorah;Smaug
+53;2;Daenerys ima 3 zmaja, dva se zovu Drogon i Rhaegal. Kako se zove treći ?;Viserion;Aiden;Ghidorah;Smaug
 54;2;Kako se zove Direwolf Jona Snowa ?;Ghost;Lady;Nymeria;Summer
 55;2;Koji je film o Bondu objavljen 2006. godine?;Casino Royale;Die Another Day;Quantum of Solace;Skyfall
 56;2;Koliko je godina imao Michael kad je tužno preminuo 2009. godine?;50;49;44;52
