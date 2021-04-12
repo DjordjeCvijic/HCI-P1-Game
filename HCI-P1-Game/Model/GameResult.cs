@@ -9,9 +9,5 @@ namespace HCI_P1_Game.Model
         public string Ime { get; set; }
         public int Rezultat { get; set; }
         public string Datum { get; set; }
-        
-
-        
-
     }
 }

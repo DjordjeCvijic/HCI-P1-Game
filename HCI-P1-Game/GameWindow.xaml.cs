@@ -109,11 +109,11 @@ namespace HCI_P1_Game
 
                     string CurrentPriceLikeString = PriceLabels[CurrentQuestionNumber - 1].Content.ToString();
                     CurrentPrice = int.Parse(StringWithoutSpaces(CurrentPriceLikeString));
-                    if (CurrentQuestionNumber == 15)//krja igre osovjen milion
+                    if (CurrentQuestionNumber == 15)
                     {
                         InfoWindow nextQuestionWindow = new InfoWindow("Čestitamo,osvojili ste milion !", "Sačuvaj rezultat", "Igraj ponovo");
                         bool? result1 = nextQuestionWindow.ShowDialog();
-                        if (result1 ?? false)//osvojen milion,hoce da sacuva
+                        if (result1 ?? false)
                         {
 
                             new SaveResultWindow(CurrentPrice, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
@@ -121,7 +121,7 @@ namespace HCI_P1_Game
                             DgResult.ItemsSource = LoadCollectionData();
                             ClearWindow();
                         }
-                        else//samo hoce novu igru
+                        else
                         {
 
                             ClearWindow();
@@ -133,7 +133,7 @@ namespace HCI_P1_Game
                     {
                         InfoWindow nextQuestionWindow = new InfoWindow("Odgovor je tačan !", "Sledeće pitanje", "Kraj igre,sačuvaj rezultat");
                         bool? result1 = nextQuestionWindow.ShowDialog();
-                        if (result1 ?? false)//tacan odgovor i sledece pitanje
+                        if (result1 ?? false)
                         {
 
                             SetNewQuestion();
@@ -151,11 +151,11 @@ namespace HCI_P1_Game
                     
                    
                 }
-                else//odgovor nije tacan
+                else
                 {
                     InfoWindow saveScoreWindow = new InfoWindow("Odgovor nije tačan !", "Sačuvaj rezultat", "Ponovna igra");
                     bool? result2 = saveScoreWindow.ShowDialog();
-                    if(result2 ?? false)//hoce da sacuva rezulta
+                    if(result2 ?? false)
                     {
                         if(sillNumber==1)
                             new SaveResultWindow(1000, DateTime.Now.ToString("dd-MM-yyy")).ShowDialog();
@@ -167,7 +167,7 @@ namespace HCI_P1_Game
                         DgResult.ItemsSource = LoadCollectionData();
                         ClearWindow();
                     }
-                    else//nece da sacuva rezultat,ponovna igra
+                    else
                     {
                         ClearWindow();
                         SetNewQuestion();
